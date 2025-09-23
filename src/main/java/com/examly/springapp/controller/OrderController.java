@@ -33,8 +33,8 @@ private RazorpayClient razorpayClient;
 
 public OrderController() throws RazorpayException {
 this.razorpayClient = new RazorpayClient(
-"rzp_test_4LPGV7rP4wBreT",
-"14VPwmYvO6LmoLAyqRKYgE3G"
+"rzp_live_RB344vHWCMRmVu",
+"By9CZOOnxTQxIi2tDPgTPoc2"
 );
 }
 
