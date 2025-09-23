@@ -108,7 +108,7 @@ public class UserController {
         return (ResponseEntity<byte[]>) userRepository.findById(id)
                 .map(user -> {
                     try {
-                        String qrContent = "https://8081-cbaacefbecfdaacedbdfdaffabfbdede.premiumproject.examly.io/profilepage/"
+                        String qrContent = "https://sakthivelappdevelopmentbackend-0oy6.onrender.com/profilepage/"
                                 + user.getId();
 
                         byte[] qrImage = qrCodeService.generateQRCode(qrContent, 250, 250);
