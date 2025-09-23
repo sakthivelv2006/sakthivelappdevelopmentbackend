@@ -36,7 +36,7 @@ public class PasswordController {
         String token = UUID.randomUUID().toString();
         resetTokens.put(token, email);
 
-        String resetLink = "https://8080-cbaacefbecfdaacedbdfdaffabfbdede.premiumproject.examly.io/api/users/password/reset-form?token=" + token;
+        String resetLink = "https://sakthivelappdevelopmentbackend-0oy6.onrender.com/api/users/password/reset-form?token=" + token;
 
         try {
             sendHtmlMail(email, resetLink);
