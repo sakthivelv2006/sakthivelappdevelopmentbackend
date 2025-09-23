@@ -42,7 +42,7 @@ return savedUser;
 public void sendVerificationEmail(User user) throws MessagingException {
 String to = user.getEmail();
 String subject = "Verify your email";
-String verificationLink = "https://8080-cbaacefbecfdaacedbdfdaffabfbdede.premiumproject.examly.io/api/verify?token=" + user.getVerificationToken();
+String verificationLink = "https://sakthivelappdevelopmentbackend-0oy6.onrender.com/api/verify?token=" + user.getVerificationToken();
 
 String content = "<p>Hello,</p>"
 + "<p>Click the button below to verify your email:</p>"
