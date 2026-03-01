@@ -1,28 +1,31 @@
-# Use Java 21 base image
+# Use lightweight Java image
 FROM eclipse-temurin:21-jdk-alpine
 
 # Set working directory
 WORKDIR /app
 
-# Copy Maven wrapper and pom.xml first (for caching dependencies)
+# Copy Maven wrapper & config first (for dependency caching)
 COPY mvnw .
 COPY .mvn .mvn
 COPY pom.xml .
 
-# Make Maven wrapper executable
+# Make wrapper executable
 RUN chmod +x mvnw
 
-# Download dependencies offline (caching step)
+# Download dependencies (cache layer)
 RUN ./mvnw dependency:go-offline
 
-# Copy the source code
+# Copy source
 COPY src ./src
 
-# Build the application (skip tests to speed up)
+# Build application
 RUN ./mvnw clean package -DskipTests
 
-# Expose the port Spring Boot runs on
+# Render provides dynamic PORT
+ENV PORT=8080
+
+# Expose container port
 EXPOSE 8080
 
-# Run the JAR dynamically (no hardcoded version)
-CMD java -jar target/*.jar
+# Run app using dynamic port
+CMD ["sh", "-c", "java -jar target/*.jar --server.port=$PORT"]
